@@ -39,6 +39,16 @@ class MinioCharm(CharmBase):
             "MINIO_ACCESS_KEY": config["access-key"],
             "MINIO_SECRET_KEY": config["secret-key"]
         }
+        volume_config = [
+            {
+                "name": "minio-volume",
+                "mountPath": "/opt/bitnami/minio-client/minio-volume",
+                "hostPath": {
+                    "path": "/home/ubuntu/docker/minio-volume",
+                    "type": "DirectoryOrCreate"
+                }
+            }
+        ]
         spec = {
             "version": 3,
             "containers": [
@@ -48,6 +58,7 @@ class MinioCharm(CharmBase):
                     "imagePullPolicy": "IfNotPresent",
                     "ports": ports,
                     "envConfig": env_config,
+                    "volumeConfig": volume_config
                 }
             ]
         }
