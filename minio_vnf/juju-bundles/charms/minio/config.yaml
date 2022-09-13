@@ -1,0 +1,29 @@
+options:
+  image:
+    type: string
+    default: bitnami/minio:latest
+    description: minio image name.
+  main-port:
+    type: int
+    default: 9000
+    description: minio internal http port
+  console-port:
+    type: int
+    default: 9001
+    description: minio console-ui http port
+  root-user:
+    type: string
+    default: minio
+    description: root user
+  root-pass:
+    type: string
+    default: MinioP@ss
+    description: root password
+  access-key:
+    type: string
+    default: minio
+    description: access key
+  secret-key:
+    type: string
+    default: MinioP@ss
+    description: secret key

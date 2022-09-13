@@ -1,0 +1,13 @@
+name: minio
+display-name: |
+  minio charm operator.
+description: |
+  file server with object storage.
+summary: |
+  minio charm
+
+series: [kubernetes]
+
+deployment:
+  type: stateless
+  service: loadbalancer
