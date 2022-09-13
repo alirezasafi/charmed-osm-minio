@@ -7,3 +7,25 @@ bucketcreate:
       default: ""
   required:
     - name
+sendfile:
+  description: "send file to specific host"
+  params:
+    endpoint:
+      description: "minio service endpoint"
+      default: "http://minio-dst:9000"
+    access-key:
+      description: "service access key"
+      default: ""
+    secret-key:
+      description: "service secret key"
+      default: ""
+    target-bucket:
+      description: "target bucket name"
+      default: "samples"
+    source-filename:
+      description: "source file name"
+      default: "test.txt"
+  required:
+    - endpoint
+    - access-key
+    - secret-key

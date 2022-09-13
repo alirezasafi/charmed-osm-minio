@@ -21,6 +21,27 @@ vnfd:
                 name: name
                 value: 'samples'
               seq: 1
+            config-primitive:
+            - name: sendfile
+              parameter:
+              - data-type: STRING
+                name: application-name
+                default-value: minio-src
+              - data-type: STRING
+                name: endpoint
+                default-value: ''
+              - data-type: STRING
+                name: access-key
+                default-value: ''
+              - data-type: STRING
+                name: secret-key
+                default-value: ''
+              - data-type: STRING
+                name: target-bucket
+                default-value: 'samples'
+              - data-type: STRING
+                name: source-filename
+                default-value: 'test.txt'
   k8s-cluster:
     nets:
     - id: mgmtnet

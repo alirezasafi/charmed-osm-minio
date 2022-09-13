@@ -1,0 +1,60 @@
+#!/bin/bash
+
+ENDPOINT=`action-get endpoint`
+ACCESS_KEY=`action-get access-key`
+SECRET_KEY=`action-get secret-key`
+TARGET_BUCKET=`action-get target-bucket`
+SOURCE_FILENAME=`action-get source-filename`
+ALIASNAME="minio_dst"
+logfile="/opt/bitnami/minio-client/logs.txt"
+
+function set_alias()
+{
+    # set alias before upload the file
+    alias_name=$1
+    alias_endpoint=$2
+    alias_access=$3
+    alias_secret=$4
+    mc alias set $alias_name $alias_endpoint $alias_access $alias_secret
+}
+function upload_file()
+{
+    
+    volume_path="/opt/bitnami/minio-client/minio-volume/"
+    local_path="/opt/bitnami/minio-client/"
+    alias_name=$1
+    target_bucket=$2
+    source_file=$3
+    source_path=$volume_path$source_file
+    if [[ ! -f $volume_path$source_file ]]
+    then
+	    if [ -z "$source_file" ]
+	    then
+		    source_file="test.txt"
+        fi
+	    echo "making file in $local_path$source_file" >> $logfile
+	    truncate -s 10M $local_path$source_file
+	    source_path=$local_path$source_file
+	    echo "file created in $local_path$source_file" >> $logfile
+    fi
+    echo "....uploading...." >> $logfile
+    mc cp $source_path $alias_name/$target_bucket 2>> $logfile 1>> $logfile
+}
+
+function logger()
+{
+    echo "destination endpoint: $ENDPOINT" > $logfile
+    echo "access key: $ACCESS_KEY" >> $logfile
+    echo "secret key: $SECRET_KEY" >> $logfile
+    echo "target bucket name: $TARGET_BUCKET" >> $logfile
+    echo "source file name: $SOURCE_FILENAME" >> $logfile    
+}
+function main()
+{
+    logger
+    set_alias $ALIASNAME $ENDPOINT $ACCESS_KEY $SECRET_KEY
+    echo "alias setted successfully" >> $logfile
+    upload_file $ALIASNAME $TARGET_BUCKET $SOURCE_FILENAME
+}
+
+main
