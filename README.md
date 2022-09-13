@@ -1,0 +1,1 @@
+# charmed-osm-minio
