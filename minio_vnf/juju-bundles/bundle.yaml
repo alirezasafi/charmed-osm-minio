@@ -1,6 +1,13 @@
 description: Minio Bundle
 bundle: kubernetes
 applications:
-  minio:
+  minio-src:
     charm: './charms/minio'
     scale: 1
+    placement: "master=master1"
+    constraints: "mem=8G cpu-cores=8"
+  minio-dst:
+    charm: './charms/minio'
+    scale: 1
+    placement: "worker=worker1"
+    constraints: "mem=4G cpu-cores=4"
