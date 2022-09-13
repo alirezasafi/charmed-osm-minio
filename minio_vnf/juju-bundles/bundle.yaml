@@ -1,0 +1,6 @@
+description: Minio Bundle
+bundle: kubernetes
+applications:
+  minio:
+    charm: './charms/minio'
+    scale: 1
