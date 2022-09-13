@@ -1,0 +1,9 @@
+bucketcreate:
+  description: "create bucket action"
+  params:
+    name:
+      description: "the name of bucket"
+      type: string
+      default: ""
+  required:
+    - name

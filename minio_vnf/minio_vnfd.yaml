@@ -7,6 +7,20 @@ vnfd:
   mgmt-cp: vnf-cp0-ext
   df:
   - id: default-df
+    lcm-operations-configuration:
+      operate-vnf-op-config:
+        day1-2:
+          - id: minio-kdu
+            initial-config-primitive:
+            - name: bucketcreate
+              parameter:
+              - data-type: STRING
+                name: application-name
+                value: minio-dst
+              - data-type: STRING
+                name: name
+                value: 'samples'
+              seq: 1
   k8s-cluster:
     nets:
     - id: mgmtnet

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+NAME=`action-get name`
+
+echo "bucket creation: $NAME"
+mc mb local/$NAME
