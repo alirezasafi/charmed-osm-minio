@@ -1,0 +1,22 @@
+nsd:
+  nsd:
+  - id: minio_nsd
+    name: minio_nsd
+    designer: OSM
+    description: minio network service descriptor.
+    version: '1.0'
+    vnfd-id:
+    - minio_vnfd
+    df:
+    - id: default-df
+      vnf-profile:
+      - id: "1"
+        vnfd-id: minio_vnfd
+        virtual-link-connectivity:
+        - virtual-link-profile-id: minio_nsd_vld0
+          constituent-cpd-id:
+          - constituent-base-element-id: "1"
+            constituent-cpd-id: vnf-cp0-ext
+    virtual-link-desc:
+    - id: minio_nsd_vld0
+      mgmt-network: true
