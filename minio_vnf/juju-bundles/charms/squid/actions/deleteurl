@@ -1,0 +1,5 @@
+#!/bin/bash
+
+URL=`action-get url`
+sed -i "/acl allowedurls dstdomain .$URL/d" /etc/squid/squid.conf
+kill -HUP `cat /var/run/squid.pid`

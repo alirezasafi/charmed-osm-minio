@@ -1,0 +1,9 @@
+options:
+  image:
+    type: string
+    default: domfleischmann/squid-python:latest
+    description: squid image name
+  port:
+    type: int
+    default: 3128
+    description: squid http port

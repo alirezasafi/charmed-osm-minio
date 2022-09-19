@@ -1,0 +1,18 @@
+addurl:
+  description: add url to allowed domains
+  params:
+    url:
+      description: "url domain name"
+      type: string
+      default: ""
+  required:
+    - url
+deleteurl:
+  description: delete url from allowed domains
+  params:
+    url:
+      description: "url domain name"
+      type: string
+      default: ""
+  required:
+    - url

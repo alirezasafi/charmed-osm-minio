@@ -1,0 +1,13 @@
+name: squid-test
+display-name: |
+  squid charm operator
+description: |
+  squid firewall service.
+summary: |
+  squid test charm operator
+
+series: [kubernetes]
+
+deployment:
+  type: stateful
+  service: loadbalancer
