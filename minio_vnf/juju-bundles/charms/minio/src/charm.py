@@ -37,7 +37,9 @@ class MinioCharm(CharmBase):
             "MINIO_ROOT_USER": config["root-user"],
             "MINIO_ROOT_PASSWORD": config["root-pass"],
             "MINIO_ACCESS_KEY": config["access-key"],
-            "MINIO_SECRET_KEY": config["secret-key"]
+            "MINIO_SECRET_KEY": config["secret-key"],
+            "HTTP_PROXY": "http://squid:3128",
+            "HTTPS_PROXY": "http://squid:3128"
         }
         volume_config = [
             {
