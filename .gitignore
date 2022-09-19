@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+minio_ns.tar.gz
+minio_vnf.tar.gz

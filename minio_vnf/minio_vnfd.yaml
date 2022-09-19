@@ -42,6 +42,22 @@ vnfd:
               - data-type: STRING
                 name: source-filename
                 default-value: 'test.txt'
+            - name: addurl
+              parameter:
+              - data-type: STRING
+                name: application-name
+                default-value: squid
+              - data-type: STRING
+                name: url
+                default-value: ''
+            - name: deleteurl
+              parameter:
+              - data-type: STRING
+                name: application-name
+                default-value: squid
+              - data-type: STRING
+                name: url
+                default-value: ''
   k8s-cluster:
     nets:
     - id: mgmtnet

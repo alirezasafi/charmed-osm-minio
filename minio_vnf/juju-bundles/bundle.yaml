@@ -4,10 +4,15 @@ applications:
   minio-src:
     charm: './charms/minio'
     scale: 1
-    placement: "master=master1"
-    constraints: "mem=8G cpu-cores=8"
+    trust: true
+    placement: master=master1
   minio-dst:
     charm: './charms/minio'
     scale: 1
-    placement: "worker=worker1"
-    constraints: "mem=4G cpu-cores=4"
+    trust: true
+    placement: worker=worker1
+  squid:
+    charm: './charms/squid'
+    scale: 1
+    placement: master=master1
+    trust: true
