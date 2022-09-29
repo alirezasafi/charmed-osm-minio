@@ -10,13 +10,15 @@ nsd:
     df:
     - id: default-df
       vnf-profile:
+      # list of vnfs that runs in the network service
       - id: "1"
         vnfd-id: minio_vnfd
         virtual-link-connectivity:
+        # connect network service virtual link to the vnfs management connection points.
         - virtual-link-profile-id: minio_nsd_vld0
           constituent-cpd-id:
           - constituent-base-element-id: "1"
-            constituent-cpd-id: vnf-cp0-ext
+            constituent-cpd-id: vnf-cp0-ext  # vnf management connection point
     virtual-link-desc:
-    - id: minio_nsd_vld0
+    - id: minio_nsd_vld0  # network service virtual link id
       mgmt-network: true

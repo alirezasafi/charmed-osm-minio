@@ -4,7 +4,7 @@ vnfd:
   description: minio virtual network function descriptor.
   provider: OSM
   version: '1.0'
-  mgmt-cp: vnf-cp0-ext
+  mgmt-cp: vnf-cp0-ext  # set sample connection point for vnf to connect other parts
   df:
   - id: default-df
     lcm-operations-configuration:
@@ -22,7 +22,7 @@ vnfd:
                 value: 'samples'
               seq: 1
             config-primitive:
-            - name: sendfile
+            - name: sendfile  # send file action. send data from source file service to some destination
               parameter:
               - data-type: STRING
                 name: application-name
@@ -42,7 +42,7 @@ vnfd:
               - data-type: STRING
                 name: source-filename
                 default-value: 'test.txt'
-            - name: addurl
+            - name: addurl  # add url or domain to allowed squid domains. squid is middle web proxy between source and destination file server
               parameter:
               - data-type: STRING
                 name: application-name
@@ -50,7 +50,7 @@ vnfd:
               - data-type: STRING
                 name: url
                 default-value: ''
-            - name: deleteurl
+            - name: deleteurl   # delete url or domain to allowe squid domains.
               parameter:
               - data-type: STRING
                 name: application-name
@@ -61,9 +61,10 @@ vnfd:
   k8s-cluster:
     nets:
     - id: mgmtnet
-  ext-cpd:
+  ext-cpd:  # make connection between k8s and vnf
   - id: vnf-cp0-ext
     k8s-cluster-net: mgmtnet
   kdu:
+  # list of kubernetes deployment unit defined here.
   - name: minio-kdu
     juju-bundle: bundle.yaml

@@ -3,4 +3,6 @@
 NAME=`action-get name`
 
 echo "bucket creation: $NAME"
+
+# create bucket command. mc is cli client of minio.
 mc mb local/$NAME
